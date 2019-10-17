@@ -1,0 +1,11 @@
+<button mat-button [matMenuTriggerFor]="companies">Companies</button>
+<mat-menu #companies="matMenu">
+  <button mat-menu-item>Prada</button>
+  <button mat-menu-item>Burberry</button>
+</mat-menu>
+
+<button mat-button [matMenuTriggerFor]="options">Options</button>
+<mat-menu #options="matMenu">
+  <button mat-menu-item>My Account</button>
+  <button mat-menu-item>Log Out</button>
+</mat-menu>
