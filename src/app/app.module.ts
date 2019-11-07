@@ -8,13 +8,15 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MenuComponent } from './menu/menu.component';
 import { MatMenuModule, MatButtonModule, MatIconModule } from '@angular/material';
 import { CompaniesComponent } from './companies/companies.component';
+import { CompanyDetailComponent } from './company-detail/company-detail.component';
 
 
 @NgModule({
    declarations: [
       AppComponent,
       MenuComponent,
-      CompaniesComponent
+      CompaniesComponent,
+      CompanyDetailComponent
    ],
    imports: [
       BrowserModule,
