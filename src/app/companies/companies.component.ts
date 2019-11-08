@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Company } from '../company';
-import { COMPANIES } from '../mock-companies';
+import { CompanyService } from '../company.service';
 
 @Component({
   selector: 'app-companies',
@@ -9,16 +9,22 @@ import { COMPANIES } from '../mock-companies';
 })
 export class CompaniesComponent implements OnInit {
 
-  companies = COMPANIES;
+  companies: Company[];
   selectedCompany: Company;
 
   onSelect(company: Company): void {
     this.selectedCompany = company;
   }
 
-  constructor() { }
+  getCompanies(): void {
+    this.companyService.getCompanies()
+      .subscribe(companies => this.companies = companies);
+  }
+
+  constructor(private companyService: CompanyService) { }
 
   ngOnInit() {
+    this.getCompanies();
   }
 
 }
