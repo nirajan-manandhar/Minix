@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Company } from '../company';
-import { COMPANIES } from '../mock-companies';
+import { CompanyService } from '../company.service';
+import { MessageService } from './message.service';
 
 @Component({
   selector: 'app-companies',
@@ -9,16 +10,24 @@ import { COMPANIES } from '../mock-companies';
 })
 export class CompaniesComponent implements OnInit {
 
-  companies = COMPANIES;
+  companies: Company[];
   selectedCompany: Company;
 
   onSelect(company: Company): void {
     this.selectedCompany = company;
   }
 
-  constructor() { }
+  // Calls getCompanies() from the company service
+  getCompanies(): void {
+    this.companyService.getCompanies() // This is referencing the Observable
+      .subscribe(companies => this.companies = companies); // This is Observable.Subscribe(...)
+  }
 
+  constructor(private companyService: CompanyService) { }
+
+  // Calls this class' getCompanies() method
   ngOnInit() {
+    this.getCompanies();
   }
 
 }
