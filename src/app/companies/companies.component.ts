@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Company } from '../company';
 import { CompanyService } from '../company.service';
-import { MessageService } from './message.service';
 
 @Component({
   selector: 'app-companies',
