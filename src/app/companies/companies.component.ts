@@ -10,11 +10,6 @@ import { CompanyService } from '../company.service';
 export class CompaniesComponent implements OnInit {
 
   companies: Company[];
-  selectedCompany: Company;
-
-  onSelect(company: Company): void {
-    this.selectedCompany = company;
-  }
 
   // Calls getCompanies() from the company service
   getCompanies(): void {

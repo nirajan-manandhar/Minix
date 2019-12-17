@@ -1,9 +1,9 @@
 <h2>My Companies</h2>
 <ul class="companies">
-    <li *ngFor="let company of companies" 
-        (click)="onSelect(company)"
-        [class.selected]="company === selectedCompany">
-        <span class="badge">{{company.id}}</span> {{company.name}} {{company.sales}}
+    <li *ngFor="let company of companies">
+        <a routerLink="/detail/{{company.id}}">
+            <span class="badge">{{company.id}}</span> {{company.name}}
+        </a>
     </li>
 </ul>
-<app-company-detail [company]="selectedCompany"></app-company-detail>
+

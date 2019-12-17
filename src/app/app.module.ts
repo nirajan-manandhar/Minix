@@ -10,6 +10,7 @@ import { MatMenuModule, MatButtonModule, MatIconModule } from '@angular/material
 import { CompaniesComponent } from './companies/companies.component';
 import { CompanyDetailComponent } from './company-detail/company-detail.component';
 import { MessagesComponent } from './messages/messages.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import { MessagesComponent } from './messages/messages.component';
       MenuComponent,
       CompaniesComponent,
       CompanyDetailComponent,
-      MessagesComponent
+      MessagesComponent,
+      DashboardComponent
    ],
    imports: [
       BrowserModule,
