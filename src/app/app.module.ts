@@ -14,6 +14,8 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 
 import { HttpClientModule } from '@angular/common/http';
 
+import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
+import { InMemoryDataService } from './in-memory-data.service';
 
 @NgModule({
    declarations: [
@@ -32,7 +34,10 @@ import { HttpClientModule } from '@angular/common/http';
       MatMenuModule,
       MatButtonModule,
       MatIconModule,
-      HttpClientModule
+      HttpClientModule,
+      HttpClientInMemoryWebApiModule.forRoot(
+         InMemoryDataService, { dataEncapsulation: false }
+      )
    ],
    providers: [],
    bootstrap: [
