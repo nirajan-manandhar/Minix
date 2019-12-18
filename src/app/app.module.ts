@@ -12,6 +12,8 @@ import { CompanyDetailComponent } from './company-detail/company-detail.componen
 import { MessagesComponent } from './messages/messages.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 
+import { HttpClientModule } from '@angular/common/http';
+
 
 @NgModule({
    declarations: [
@@ -29,7 +31,8 @@ import { DashboardComponent } from './dashboard/dashboard.component';
       BrowserAnimationsModule,
       MatMenuModule,
       MatButtonModule,
-      MatIconModule
+      MatIconModule,
+      HttpClientModule
    ],
    providers: [],
    bootstrap: [
