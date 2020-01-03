@@ -17,6 +17,10 @@ export class CompanyService {
     this.messageService.add(`CompanyService: ${message}`);
   }
 
+  httpOptions = {
+    headers: new HttpHeaders({ 'Content-Type': 'applicatoin/json' })
+  };
+
   constructor(
     private messageService: MessageService,
     private http: HttpClient) { }
@@ -25,8 +29,31 @@ export class CompanyService {
     return this.http.get<Company[]>(this.companiesUrl)
       .pipe(
         tap(_ => this.log('fetched companies')), // _ => used because the parameter is not important
-        catchError(this.handleError<Company[]>('getheros', []))
+        catchError(this.handleError<Company[]>('getcompanies', []))
       );
+  }
+
+  /** GET company by id. Will 404 if id not found */
+  getCompany(id: number): Observable<Company> {
+    const url = `${this.companiesUrl}/${id}`;
+    return this.http.get<Company>(url).pipe(
+      tap(_ => this.log(`fetched company id=${id}`)),
+      catchError(this.handleError<Company>(`getCompany id=${id}`))
+    );
+  }
+
+  updateCompany (company: Company): Observable<any> {
+    return this.http.put(this.companiesUrl, company, this.httpOptions).pipe(
+      tap(_ => this.log(`updated company id=${company.id}`)),
+      catchError(this.handleError<any>('updateCompany'))
+    );
+  }
+
+  addCompany (company: Company): Observable<Company> {
+    return this.http.post<Company>(this.companiesUrl, company, this.httpOptions).pipe(
+      tap((newCompany: Company) => this.log(`added company w/ id=${newCompany.id}`)),
+      catchError(this.handleError<Company>(`addCompany`))
+    );
   }
 
   /**
@@ -49,12 +76,5 @@ export class CompanyService {
     };
   }
 
-  /** GET hero by id. Will 404 if id not found */
-  getCompany(id: number): Observable<Company> {
-    const url = `${this.companiesUrl}/${id}`;
-    return this.http.get<Company>(url).pipe(
-      tap(_ => this.log(`fetched company id=${id}`)),
-      catchError(this.handleError<Company>(`getCompany id=${id}`))
-    );
-  }
+  
 }

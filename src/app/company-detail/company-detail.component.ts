@@ -33,4 +33,9 @@ export class CompanyDetailComponent implements OnInit {
     this.location.back();
   }
 
+  save(): void {
+    this.companyService.updateCompany(this.company)
+      .subscribe(() => this.goBack());
+  }
+
 }

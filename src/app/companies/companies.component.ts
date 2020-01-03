@@ -17,6 +17,15 @@ export class CompaniesComponent implements OnInit {
       .subscribe(companies => this.companies = companies); // This is Observable.Subscribe(...)
   }
 
+  add(name: string): void {
+    name = name.trim();
+    if (!name) { return };
+    this.companyService.addCompany({ name } as Company)
+      .subscribe(company => {
+        this.companies.push(company);
+      });
+  }
+
   constructor(private companyService: CompanyService) { }
 
   // Calls this class' getCompanies() method
