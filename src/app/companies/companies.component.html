@@ -13,6 +13,8 @@
         <a routerLink="/detail/{{company.id}}">
             <span class="badge">{{company.id}}</span> {{company.name}}
         </a>
+        <button class="delete" title="delete company"
+            (click)="delete(company)">x</button>
     </li>
 </ul>
 

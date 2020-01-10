@@ -26,6 +26,11 @@ export class CompaniesComponent implements OnInit {
       });
   }
 
+  delete(company: Company): void {
+    this.companies = this.companies.filter(c => c !== company);
+    this.companyService.deleteCompany(company).subscribe();
+  }
+
   constructor(private companyService: CompanyService) { }
 
   // Calls this class' getCompanies() method

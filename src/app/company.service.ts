@@ -18,7 +18,7 @@ export class CompanyService {
   }
 
   httpOptions = {
-    headers: new HttpHeaders({ 'Content-Type': 'applicatoin/json' })
+    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };
 
   constructor(
@@ -53,6 +53,16 @@ export class CompanyService {
     return this.http.post<Company>(this.companiesUrl, company, this.httpOptions).pipe(
       tap((newCompany: Company) => this.log(`added company w/ id=${newCompany.id}`)),
       catchError(this.handleError<Company>(`addCompany`))
+    );
+  }
+
+  deleteCompany (company: Company | number): Observable<Company> {
+    const id = typeof company === 'number' ? company : company.id;
+    const url = `${this.companiesUrl}/${id}`;
+
+    return this.http.delete<Company>(url, this.httpOptions).pipe(
+      tap(_ => this.log(`deleted company id=${id}`)),
+      catchError(this.handleError<Company>('deleteCompany'))
     );
   }
 
