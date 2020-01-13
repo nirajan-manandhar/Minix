@@ -16,6 +16,7 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { InMemoryDataService } from './in-memory-data.service';
+import { CompanySearchComponent } from './company-search/company-search.component';
 
 @NgModule({
    declarations: [
@@ -24,7 +25,8 @@ import { InMemoryDataService } from './in-memory-data.service';
       CompaniesComponent,
       CompanyDetailComponent,
       MessagesComponent,
-      DashboardComponent
+      DashboardComponent,
+      CompanySearchComponent
    ],
    imports: [
       BrowserModule,

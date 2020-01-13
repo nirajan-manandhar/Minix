@@ -66,6 +66,18 @@ export class CompanyService {
     );
   }
 
+  /* GET companies whose name contains search term */
+  searchCompanies(term: string): Observable<Company[]> {
+    if (!term.trim()) {
+      // if not search term, return empty company array.
+      return of([]);
+    }
+    return this.http.get<Company[]>(`${this.companiesUrl}/?name=${term}`).pipe(
+      tap(_ => this.log(`found companies matching "${term}"`)),
+      catchError(this.handleError<Company[]>('searchCompanies', []))
+    );
+  }
+
   /**
    * Handle Http operation that failed.
    * Let the app continue.
