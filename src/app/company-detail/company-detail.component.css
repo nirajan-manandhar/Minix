@@ -1,5 +1,5 @@
 /* HeroDetailComponent's private CSS styles */
-label {
+  #salesLabel {
     display: inline-block;
     width: 3em;
     margin: .5em 0;
@@ -11,8 +11,14 @@ label {
     font-size: 1em;
     padding-left: .4em;
   }
+  input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+  }
   button {
     margin-top: 20px;
+    margin-left: 10px;
     font-family: Arial;
     background-color: #eee;
     border: none;

@@ -27,8 +27,10 @@ export class CompaniesComponent implements OnInit {
   }
 
   delete(company: Company): void {
-    this.companies = this.companies.filter(c => c !== company);
-    this.companyService.deleteCompany(company).subscribe();
+    if(confirm("Are you sure you want to delete " + company.name + "?")) {
+      this.companies = this.companies.filter(c => c !== company);
+      this.companyService.deleteCompany(company).subscribe();
+    }
   }
 
   constructor(private companyService: CompanyService) { }

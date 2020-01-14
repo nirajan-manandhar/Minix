@@ -4,10 +4,20 @@
     <div><span>name: </span>{{company.name}}</div>
     <div><span>sales: </span>{{company.sales}}</div>
     <div>
-        <label>sales:
-        <input [(ngModel)]="company.sales" placeholder="$0"/>
+        <label id="salesLabel">sales:
+        <input [(ngModel)]="company.sales" placeholder="0"/>
         </label>
     </div>
 </div>
 <button (click)="goBack()">Back</button>
 <button (click)="save()">Save</button>
+<div>
+    <label>
+        <input #newSale type="number"/>
+    </label>
+    <!--(click) passes input value to add() and then clears the input-->
+    <button (click)="add(newSale.value); newSale.value=''">
+        Add
+    </button>
+</div>
+

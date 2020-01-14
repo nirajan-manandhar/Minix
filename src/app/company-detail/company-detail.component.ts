@@ -33,6 +33,13 @@ export class CompanyDetailComponent implements OnInit {
     this.location.back();
   }
 
+  add(newSale: number): void {
+    if (!newSale) { return };
+    this.company.sales = Number(this.company.sales) + Number(newSale);
+    this.companyService.updateCompany(this.company)
+      .subscribe();
+  }
+
   save(): void {
     this.companyService.updateCompany(this.company )
       .subscribe(() => this.goBack());
